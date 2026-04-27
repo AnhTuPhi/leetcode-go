@@ -32,6 +32,7 @@ func Run[I, O any](sol Solution[I, O]) {
 			label = fmt.Sprintf("Case %d", i+1)
 		}
 
+		inputSnapshot := fmt.Sprintf("%+v", tc.Input)
 		start := time.Now()
 		actual := sol.Solve(tc.Input)
 		elapsed := time.Since(start)
@@ -50,7 +51,7 @@ func Run[I, O any](sol Solution[I, O]) {
 			status, label, yellow, fmtDuration(elapsed), reset)
 
 		if !ok {
-			fmt.Printf("       input:    %+v\n", tc.Input)
+			fmt.Printf("       input:    %+v\n", inputSnapshot)
 			fmt.Printf("       expected: %+v\n", tc.Expected)
 			fmt.Printf("       actual:   %+v\n", actual)
 		}
